@@ -1,17 +1,17 @@
 import { NavBar, BatchCard } from "../components"
-
 import { gql, useQuery } from "@apollo/client";
 
-const batchesData = gql`
-{
-    batches {
-      id
-      name
-    }
-  }
-`;
 
 const IndexPage = () => {
+  const batchesData = gql`
+  {
+      batches {
+        id
+        name
+      }
+    }
+  `;
+  
   const { data, error, loading } = useQuery(batchesData)
   if (loading) return <p>Loading...</p>
 
