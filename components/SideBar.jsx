@@ -6,7 +6,7 @@ import { MdDashboard } from 'react-icons/md'
 
 function SideBar({ data }) {
   return (
-    <div className="col-span-2 bg-red-300 -ml-8 px-4 py-4">
+    <div className="w-1/4 bg-red-300 -ml-8 px-4 py-4">
       <div className='bg-white px-2 py-1 rounded-md mb-20'>
         <p>{data.batch ? data.batch.name : "No Batch"}</p>
         <p>Class {data.type}</p>
@@ -26,19 +26,19 @@ function SideBar({ data }) {
         </li>
         <li className='my-5 flex text-xl items-center'>
           <BsCalendar3 className='mr-3' />
-          <Link href="/">
+          <Link href={`/attendance/${data.id}`}>
             <p className='cursor-pointer'>Attendance</p>
           </Link>
         </li>
         <li className='my-5 flex text-xl items-center'>
           <GrLineChart className='mr-3' />
-          <Link href="/">
+          <Link href={`/productivity/${data.id}`}>
             <p className='cursor-pointer'>Productivity</p>
           </Link>
         </li>
         <li className='my-5 flex text-xl items-center'>
           <BsPenFill className='mr-3' />
-          <Link href="/">
+          <Link href={`/assigment/${data.id}`}>
             <p className='cursor-pointer'>Assigment</p>
           </Link>
         </li>

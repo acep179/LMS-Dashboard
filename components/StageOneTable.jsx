@@ -1,12 +1,10 @@
 import React from 'react'
-import Link from 'next/link'
-import { IoTrashBin, IoTriangle } from 'react-icons/io5'
-import { AiFillEdit } from 'react-icons/ai'
+import { IoTriangle } from 'react-icons/io5'
 import { BsPersonXFill } from 'react-icons/bs'
 
 function StageOneTable({ students }) {
   return (
-    <div>
+    <div className='w-full'>
       <div className='text-3xl mb-5'>Students</div>
       <table className='border-collapse table-auto w-full'>
         <thead>

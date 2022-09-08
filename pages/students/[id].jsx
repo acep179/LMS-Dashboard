@@ -30,9 +30,9 @@ function Students() {
   return (
     <div className="px-8">
       <NavBar />
-      <div className="grid grid-cols-12">
+      <div className="flex w-full">
         <SideBar data={data.class} />
-        <div className="col-span-10 px-8 py-4">
+        <div className="pl-8 pt-4 w-3/4">
           {data.class.type === "STAGEONE" ? <StageOneTable students={data.class.students} /> : <StageTwoTable students={data.class.students} />}
         </div>
       </div>
