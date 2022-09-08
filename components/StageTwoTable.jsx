@@ -1,11 +1,19 @@
 import React from 'react'
 import { IoTriangle } from 'react-icons/io5'
-import { BsPersonXFill } from 'react-icons/bs'
+import { BsPersonXFill, BsPersonPlusFill } from 'react-icons/bs'
 
 function StageTwoTable({ students }) {
   return (
     <div className='w-full'>
-      <div className='text-3xl mb-5'>Students</div>
+      <div className="flex justify-between items-center mb-5">
+        <div className='text-3xl'>Students</div>
+        {students.length === 0 ? <div></div> : (
+          <button className='px-2 py-1 bg-green-500 text-white rounded-md flex items-center'>
+            <BsPersonPlusFill className='h-6 w-6 mr-3' />
+            <p className='text-lg'>Add Students</p>
+          </button>
+        )}
+      </div>
       <table className='border-collapse table-auto w-full'>
         <thead>
           <tr className='font-semibold text-center'>

@@ -3,7 +3,7 @@ import Link from "next/link"
 
 function NavBar() {
   return (
-    <nav className="py-4 flex justify-between items-center">
+    <nav className="py-4 flex justify-between items-center h-[10vh]">
       <Link href="/">
         <Image className="cursor-pointer" src="/logo.png" height={40} width={55} />
       </Link>

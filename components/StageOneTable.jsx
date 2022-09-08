@@ -7,10 +7,12 @@ function StageOneTable({ students }) {
     <div className='w-full'>
       <div className='flex justify-between items-center mb-5'>
         <p className='text-3xl'>Students</p>
-        <button className='px-2 py-1 bg-green-500 text-white rounded-md flex items-center'>
-          <BsPersonPlusFill className='h-6 w-6 mr-3' />
-          <p className='text-lg'>Add Students</p>
-        </button>
+        {students.length === 0 ? <div></div> : (
+          <button className='px-2 py-1 bg-green-500 text-white rounded-md flex items-center'>
+            <BsPersonPlusFill className='h-6 w-6 mr-3' />
+            <p className='text-lg'>Add Students</p>
+          </button>
+        )}
       </div>
       <table className='table-auto w-full'>
         <thead>
@@ -48,7 +50,7 @@ function StageOneTable({ students }) {
           })}
           {students.length === 0 ? (
             <tr className='hover:bg-green-200'>
-              <td className='p-3 border border-slate-600 text-center cursor-pointer' colSpan={8}>
+              <td className='p-3 text-center cursor-pointer' colSpan={8}>
                 + Add Students
               </td>
             </tr>

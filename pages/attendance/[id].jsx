@@ -68,6 +68,11 @@ function Attendance() {
                   </tr>
                 )
               })}
+              {data.class.students.length === 0 ? (
+                <tr>
+                  <td className='text-center p-3 bg-violet-200' colSpan={7}> There's No Students's Data. Please, Add Students at Students Menu</td>
+                </tr>
+              ) : <div></div>}
             </tbody>
           </table>
         </div>

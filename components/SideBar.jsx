@@ -6,8 +6,8 @@ import { MdDashboard } from 'react-icons/md'
 
 function SideBar({ data }) {
   return (
-    <div className="w-1/4 bg-red-300 -ml-8 px-4 py-4">
-      <div className='bg-white px-2 py-1 rounded-md mb-20'>
+    <div className="w-1/4 bg-red-300 -ml-8 px-4 py-4 h-[90vh]">
+      <div className='bg-white px-2 py-1 rounded-md mb-20 text-xl'>
         <p>{data.batch ? data.batch.name : "No Batch"}</p>
         <p>Class {data.type}</p>
       </div>

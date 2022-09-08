@@ -63,6 +63,11 @@ function Productivity() {
                   </tr>
                 )
               })}
+              {data.class.students.length === 0 ? (
+                <tr>
+                  <td className='text-center p-3 bg-rose-200' colSpan={4}> There's No Students's Data. Please, Add Students at Students Menu</td>
+                </tr>
+              ) : <div></div>}
             </tbody>
           </table>
         </div>
