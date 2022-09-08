@@ -1,6 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { NavBar, SideBar } from '../../components';
+import { IoTriangle } from 'react-icons/io5'
+import { RiHeartAddFill } from 'react-icons/ri'
 
 function Productivity() {
   const router = useRouter()
@@ -38,18 +40,26 @@ function Productivity() {
               <tr className='bg-rose-500 text-white'>
                 <th className='p-2 text-center'>No</th>
                 <th className='p-2'>Name</th>
-                <th className='p-2'>Productivity Data</th>
-                <th className='p-2'>Total</th>
+                <th className='p-2'>Point</th>
+                <th className='p-2'>Action</th>
               </tr>
             </thead>
             <tbody>
               {data.class.students.map((item, index) => {
                 return (
                   <tr className='hover:bg-rose-300'>
-                    <td className='p-2'>{index + 1}</td>
+                    <td className='p-2 text-center'>{index + 1}</td>
                     <td className='p-2'>{item.firstName}</td>
-                    <td className='p-2'>-</td>
                     <td className='p-2 text-center'>0</td>
+                    <td className='p-2 text-center'>
+                      <button className='bg-lime-500 hover:bg-lime-600 px-2 py-1 mx-auto w-max text-white text-sm rounded-md group relative'>
+                        <RiHeartAddFill className="w-5 h-5" />
+                        <div className='hidden group-hover:block ml-2 absolute bg-lime-200 w-max text-slate-600 px-2 py-1 rounded-md -bottom-10 left-0 z-10'>
+                          <IoTriangle className="w-6 h-6 absolute -top-4 left-0 fill-lime-200" />
+                          <p className='font-semibold'>Add Point</p>
+                        </div>
+                      </button>
+                    </td>
                   </tr>
                 )
               })}

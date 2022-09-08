@@ -38,7 +38,7 @@ function Class() {
         <div className='w-3/4 pl-8 pt-4 grid grid-cols-3 gap-8'>
           <p className='text-3xl col-span-3 h-0'>Class Dashboard</p>
           <div className='bg-rose-500 text-white text-4xl rounded-3xl flex items-center justify-center p-0'>
-            <p className='m-0'>{data.class.batch.name}</p>
+            <p className='m-0'>{data.class.batch ? data.class.batch.name : "No Batch"}</p>
           </div>
           <div className='bg-amber-500 text-white text-4xl rounded-3xl text-center flex flex-col items-center justify-center p-0'>
             <p className='mb-4'>Class</p>
