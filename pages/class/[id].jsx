@@ -1,7 +1,8 @@
-import { useRouter } from "next/router"
-import { gql, useQuery } from "@apollo/client";
-
-import { StageOneTable, StageTwoTable, NavBar } from "../../components";
+import { gql, useQuery } from '@apollo/client';
+import { useRouter } from 'next/router';
+import React from 'react'
+import dateFormat from 'dateformat';
+import { NavBar, SideBar } from "../../components";
 
 function Class() {
   const router = useRouter()
@@ -12,13 +13,14 @@ function Class() {
     class(id:"${id}"){
       id
       type
+      startedAt
+      endedAt
       batch{
         id
         name
       }
       students{
         id
-        firstName
       }
     }
   }
@@ -31,14 +33,30 @@ function Class() {
     <div className="px-8">
       <NavBar />
       <div className="grid grid-cols-12">
-        <div className="col-span-2 bg-red-300 h-screen -ml-8 px-8 py-4">
-          <p>{data.class.batch ? data.class.batch.name : "No Batch"} - Class {data.class.type}</p>
-        </div>
-        <div className="col-span-10 px-8 py-4">
-          {data.class.type === "STAGEONE" ? <StageOneTable students={data.class.students} /> : <StageTwoTable students={data.class.students} />}
+        <SideBar data={data.class} />
+        <div className='col-span-10 pl-8 grid grid-cols-3 gap-8'>
+          <div className='bg-rose-500 text-white text-5xl rounded-3xl flex items-center justify-center p-0'>
+            <p className='m-0'>{data.class.batch.name}</p>
+          </div>
+          <div className='bg-amber-500 text-white text-5xl rounded-3xl text-center flex flex-col items-center justify-center p-0'>
+            <p className='mb-4'>Class</p>
+            <p>{data.class.type}</p>
+          </div>
+          <div className='bg-yellow-500 text-white text-5xl rounded-3xl text-center flex flex-col items-center justify-center'>
+            <p className='mb-4'>Total Students</p>
+            <p>{data.class.students ? data.class.students.length : 0}</p>
+          </div>
+          <div className='bg-blue-500 px-5 text-white text-3xl rounded-3xl text-center flex flex-col items-center justify-center'>
+            <p>Started At:</p>
+            <p>{dateFormat(data.class.startedAt, 'dddd, d mmmm yyyy')}</p>
+          </div>
+          <div className='bg-green-500 px-5 text-white text-3xl rounded-3xl text-center flex flex-col items-center justify-center'>
+            <p>Ended At:</p>
+            <p>{dateFormat(data.class.endedAt, 'dddd, d mmmm yyyy')}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
