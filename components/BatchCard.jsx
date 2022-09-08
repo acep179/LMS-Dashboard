@@ -1,14 +1,22 @@
-function BatchCard({ batchData }) {
+import Link from 'next/link';
+
+function BatchCard({ batchData, classData }) {
   return (
     <>
       {
         batchData.map((item, index) => {
+
           return (
             <div className="bg-orange-500 p-4 rounded-xl group relative" key={index}>
               <h2 className="text-center text-xl text-gray-100 font-bold my-3">{item.name}</h2>
               <div className="grid grid-rows-2 gap-2 mt-6 peer">
-                <button className="bg-orange-300 rounded-md p-2 text-center hover:bg-orange-400 hover:font-semibold">Stage 1</button>
-                <button className="bg-orange-300 rounded-md p-2 text-center hover:bg-orange-400 hover:font-semibold">Stage 2</button>
+                {classData.map((item) => {
+                  return (
+                    <Link href={`/class/${item.id}`}>
+                      <button className="bg-orange-300 rounded-md p-2 text-center hover:bg-orange-400 hover:font-semibold">{item.type}</button>
+                    </Link>
+                  )
+                })}
               </div>
               <div className="bg-white hidden w-max ml-auto rounded py-1 px-2 group-hover:flex absolute top-4 right-4 peer-hover:hidden">
 
