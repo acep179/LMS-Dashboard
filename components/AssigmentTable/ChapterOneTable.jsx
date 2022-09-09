@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ChapterOne() {
+function ChapterOneTable() {
   return (
     <table className='w-full table-auto'>
       <thead>
@@ -80,4 +80,4 @@ function ChapterOne() {
   )
 }
 
-export default ChapterOne
+export default ChapterOneTable
