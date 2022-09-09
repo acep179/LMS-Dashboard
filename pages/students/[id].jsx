@@ -21,6 +21,20 @@ function Students() {
         firstName
       }
     }
+    attendances{
+      id
+      student{
+        id
+      }
+      present
+    }
+    productivities{
+      id
+      point
+      student{
+        id
+      }
+    }
   }
   `;
 
@@ -34,7 +48,7 @@ function Students() {
         <SideBar data={data.class} />
         <div className='w-1/4'></div>
         <div className="pl-8 pt-4 w-3/4 mt-[10vh]">
-          {data.class.type === "STAGEONE" ? <StageOneTable students={data.class.students} /> : <StageTwoTable students={data.class.students} />}
+          {data.class.type === "STAGEONE" ? <StageOneTable students={data.class.students} attendances={data.attendances} productivities={data.productivities} /> : <StageTwoTable students={data.class.students} attendaces={data.attendaces} productivities={data.productivities} />}
         </div>
       </div>
     </div>

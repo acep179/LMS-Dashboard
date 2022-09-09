@@ -2,7 +2,23 @@ import React from 'react'
 import { IoTriangle } from 'react-icons/io5'
 import { BsPersonXFill, BsPersonPlusFill } from 'react-icons/bs'
 
-function StageOneTable({ students }) {
+function StageOneTable({ students, attendances, productivities }) {
+
+  const studentAttendance = (studentID) => {
+    const data = attendances.filter((item) => {
+      return item.student.id === studentID
+    })
+    return data
+  }
+  const studentProductivity = (studentID) => {
+    const data = productivities.filter((item) => {
+      if (item.student) {
+        return item.student.id === studentID
+      }
+    })
+    return data
+  }
+
   return (
     <div className='w-full'>
       <div className='flex justify-between items-center mb-5'>
@@ -27,13 +43,13 @@ function StageOneTable({ students }) {
           </tr>
         </thead>
         <tbody>
-          {students.map((item, index) => {
+          {students.map((student, index) => {
             return (
               <tr className='hover:bg-amber-200' key={index}>
                 <td className='p-3 text-center font-semibold w-14'>{index + 1}</td>
-                <td className='p-3'>{item.firstName}</td>
-                <td className='p-3 text-center'>0</td>
-                <td className='p-3 text-center'>0</td>
+                <td className='p-3'>{student.firstName}</td>
+                <td className='p-3 text-center'>{studentAttendance(student.id)[0] ? studentAttendance(student.id)[0].present : 0}</td>
+                <td className='p-3 text-center'>{studentProductivity(student.id)[0] ? studentProductivity(student.id)[0].point : 0}</td>
                 <td className='p-3 text-center'>0</td>
                 <td className='p-3 text-center'>0</td>
                 <td className='p-3 text-center flex'>

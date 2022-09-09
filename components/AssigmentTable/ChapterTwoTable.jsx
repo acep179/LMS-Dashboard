@@ -6,7 +6,7 @@ function ChapterTwoTable() {
       <thead>
         <tr className='bg-orange-400 text-white'>
           <th className='p-2'>No</th>
-          <th className='p-2'>Category</th>
+          <th className='p-2 w-1/2'>Category</th>
           <th className='p-2'>Persen</th>
           <th className='p-2'>Nilai</th>
           <th className='p-2'>Calculate</th>

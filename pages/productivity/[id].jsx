@@ -22,17 +22,33 @@ function Productivity() {
         firstName
       }
     }
+    productivities{
+      id
+      point
+      student{
+        id
+      }
+    }
   }
   `;
 
-  const { data, error, loading } = useQuery(query)
+  const { data: queryData, error, loading } = useQuery(query)
   if (loading) return <p>Loading...</p>
+
+  const studentProductivity = (studentID) => {
+    const data = queryData.productivities.filter((item) => {
+      if (item.student) {
+        return item.student.id === studentID
+      }
+    })
+    return data
+  }
 
   return (
     <div className="px-8">
       <NavBar />
       <div className="flex w-full">
-        <SideBar data={data.class} />
+        <SideBar data={queryData.class} />
         <div className='w-1/4'></div>
         <div className='w-3/4 pl-8 pt-4 mt-[10vh]'>
           <p className='text-3xl mb-4'>Productivity</p>
@@ -46,12 +62,12 @@ function Productivity() {
               </tr>
             </thead>
             <tbody>
-              {data.class.students.map((item, index) => {
+              {queryData.class.students.map((student, index) => {
                 return (
                   <tr className='hover:bg-rose-300'>
                     <td className='p-2 text-center'>{index + 1}</td>
-                    <td className='p-2'>{item.firstName}</td>
-                    <td className='p-2 text-center'>0</td>
+                    <td className='p-2'>{student.firstName}</td>
+                    <td className='p-2 text-center'>{studentProductivity(student.id)[0] ? studentProductivity(student.id)[0].point : 0}</td>
                     <td className='p-2 text-center'>
                       <button className='bg-lime-500 hover:bg-lime-600 px-2 py-1 mx-auto w-max text-white text-sm rounded-md group relative'>
                         <RiHeartAddFill className="w-5 h-5" />
@@ -64,7 +80,7 @@ function Productivity() {
                   </tr>
                 )
               })}
-              {data.class.students.length === 0 ? (
+              {queryData.class.students.length === 0 ? (
                 <tr>
                   <td className='text-center p-3 bg-rose-200' colSpan={4}> There's No Students's Data. Please, Add Students at Students Menu</td>
                 </tr>
