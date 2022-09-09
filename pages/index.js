@@ -26,7 +26,7 @@ const IndexPage = () => {
 return(
   <div className="px-8">
     <NavBar/>
-    <div className="relative top-[10vh]">
+    <div className="relative top-[15vh]">
         <h1 className="mb-4 text-xl text-center">Please select a Class from one of the Batches below:</h1>
         <div className="grid grid-cols-3 gap-5">
           <BatchCard batchData={data.batches} classData={data.classes}/>

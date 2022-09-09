@@ -2,13 +2,13 @@ import React from 'react'
 import { IoTriangle } from 'react-icons/io5'
 import { BsPersonXFill, BsPersonPlusFill } from 'react-icons/bs'
 
-function StageTwoTable({ students }) {
+function StageTwoTable({ students, attendances, productivities, listStudent }) {
   return (
     <div className='w-full'>
       <div className="flex justify-between items-center mb-5">
         <div className='text-3xl'>Students</div>
         {students.length === 0 ? <div></div> : (
-          <button className='px-2 py-1 bg-green-500 text-white rounded-md flex items-center'>
+          <button onClick={() => listStudent()} className='px-2 py-1 bg-green-500 text-white rounded-md flex items-center'>
             <BsPersonPlusFill className='h-6 w-6 mr-3' />
             <p className='text-lg'>Add Students</p>
           </button>
@@ -52,7 +52,7 @@ function StageTwoTable({ students }) {
             )
           })}
           {students.length === 0 ? (
-            <tr className='hover:bg-green-200'>
+            <tr onClick={() => listStudent()} className='hover:bg-green-200'>
               <td className='p-3 text-center cursor-pointer' colSpan={8}>
                 + Add Students
               </td>
