@@ -6,7 +6,9 @@ function StageOneTable({ students, attendances, productivities }) {
 
   const studentAttendance = (studentID) => {
     const data = attendances.filter((item) => {
-      return item.student.id === studentID
+      if (item.student) {
+        return item.student.id === studentID
+      }
     })
     return data
   }

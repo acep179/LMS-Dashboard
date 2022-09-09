@@ -1,7 +1,5 @@
 import { NavBar, BatchCard } from "../components"
 import { gql, useQuery } from "@apollo/client";
-import { useState } from "react";
-
 
 const IndexPage = () => {
 
@@ -26,7 +24,6 @@ const IndexPage = () => {
   if (loading) return <p>Loading...</p>
 
 return(
-
   <div className="px-8">
     <NavBar/>
     <div className="relative top-[10vh]">

@@ -40,7 +40,9 @@ function Attendance() {
 
   const studentAttendance = (studentID) => {
     const data = queryData.attendances.filter((item) => {
-      return item.student.id === studentID
+      if (item.student) {
+        return item.student.id === studentID
+      }
     })
     return data
   }
