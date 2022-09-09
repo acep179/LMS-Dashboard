@@ -33,10 +33,11 @@ function Class() {
   return (
     <div className="px-8">
       <NavBar />
-      <div className="flex w-full">
+      <div className="w-full flex">
         <SideBar data={data.class} />
-        <div className='w-3/4 pl-8 pt-4'>
-          <p className='text-3xl col-span-3 mb-4'>Class Dashboard</p>
+        <div className='w-1/4'></div>
+        <div className='w-3/4 pl-8 pt-4 mt-[10vh]'>
+          <p className='text-3xl mb-4'>Class Dashboard</p>
           <div className='grid grid-cols-3 gap-8 w-full text-4xl h-[70vh]'>
             <div className='bg-rose-500 text-white rounded-3xl flex items-center justify-center p-0'>
               <p className='m-0'>{data.class.batch ? data.class.batch.name : "No Batch"}</p>

@@ -32,7 +32,8 @@ function Attendance() {
       <NavBar />
       <div className="flex w-full">
         <SideBar data={data.class} />
-        <div className='w-3/4 pl-8 pt-4'>
+        <div className='w-1/4'></div>
+        <div className='w-3/4 pl-8 pt-4 mt-[10vh]'>
           <p className='text-3xl mb-4'>Attendance</p>
           <table className='table-auto w-full'>
             <thead>

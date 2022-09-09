@@ -32,7 +32,8 @@ function Students() {
       <NavBar />
       <div className="flex w-full">
         <SideBar data={data.class} />
-        <div className="pl-8 pt-4 w-3/4">
+        <div className='w-1/4'></div>
+        <div className="pl-8 pt-4 w-3/4 mt-[10vh]">
           {data.class.type === "STAGEONE" ? <StageOneTable students={data.class.students} /> : <StageTwoTable students={data.class.students} />}
         </div>
       </div>
