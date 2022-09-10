@@ -47,42 +47,44 @@ function Students() {
   const { data, error, loading } = useQuery(query)
   if (loading) return <p>Loading...</p>
 
-  console.log(data)
-
   const close = () => {
     const listStudent = document.getElementById('listStudent')
+    const modalBg = document.getElementById('modalBg')
     listStudent.style.display = 'none'
+    modalBg.style.display = 'none'
   }
 
   const openListStudent = () => {
     const listStudent = document.getElementById('listStudent')
+    const modalBg = document.getElementById('modalBg')
     listStudent.style.display = 'block'
+    modalBg.style.display = 'block'
   }
 
   return (
     <div className="px-8">
-      <div id='listStudent' className="hidden fixed z-40 h-screen w-screen bg-slate-500 bg-opacity-50 -ml-8" onClick={() => close()}>
-        <div className="bg-white p-3 fixed z-50 w-1/3 max-h-80 rounded-md top-1/3 right-1/3">
-          <div className="p-2 overflow-auto max-h-72">
-            <h3 className="text-2xl text-center mb-5">List of Students</h3>
-            <table className="w-full table-auto">
-              <thead>
+      <div id='modalBg' className="hidden fixed z-40 h-screen w-screen bg-slate-500 bg-opacity-50 -ml-8" onClick={() => close()}>
+      </div>
+      <div id='listStudent' className="bg-white p-3 fixed hidden z-50 w-1/3 max-h-80 rounded-md top-1/3 right-1/3">
+        <div className="p-2 overflow-auto max-h-72">
+          <h3 className="text-2xl text-center mb-5">List of Students</h3>
+          <table className="w-full table-auto">
+            <thead>
+              <tr>
+                <th className="w-10 ">No</th>
+                <th>Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.users.map((item, index) => (
                 <tr>
-                  <th className="w-10 ">No</th>
-                  <th>Name</th>
-                  <th>Action</th>
+                  <td className="text-center p-2">{index + 1}</td>
+                  <td className="p-2">{item.firstName}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {data.users.map((item, index) => (
-                  <tr>
-                    <td className="text-center p-2">{index + 1}</td>
-                    <td className="p-2">{item.firstName}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
       <NavBar />
